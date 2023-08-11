@@ -1,17 +1,5 @@
 const db = require("../db/database.js");
 
-// Function to create the database
-exports.createUserDB = (req, res) => {
-    // SQL query to create the database 'Todo'
-    let q = 'CREATE DATABASE IF NOT EXISTS Todo';
-    db.query(q, (err, result) => {
-        if (err) {
-            return res.status(500).json("Database creation failed");
-        }
-        return res.status(201).json("DB created");
-    });
-}
-
 // Function to create the 'user' table
 exports.createUserTable = (req, res) => {
     // SQL query to create the 'user' table with necessary columns
