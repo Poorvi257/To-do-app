@@ -1,13 +1,30 @@
-const express = require('express')
-const { createUserDB, createUserTable, createUserList, showUserList, showSingleUser, updateUserRecord, deleteUserRecord } = require('../controllers/user')
-const router = express.Router()
+const express = require('express');
+const {
+    createUserTable,    
+    createUserList,    
+    showUserList,     
+    showSingleUser,   
+    updateUserRecord,  
+    deleteUserRecord   
+} = require('../controllers/user'); 
+const router = express.Router();
 
-router.get('/create/database', createUserDB) //remove this from here
-router.get('/create/usertable', createUserTable)
-router.post('/create/user', createUserList)
-router.get('/get/user', showUserList)
-router.get('/get/user/:id', showSingleUser)
-router.put('/updateuser/:id', updateUserRecord)
-router.delete('/deleteuser/:id', deleteUserRecord)
+// Route to create the 'user' table
+router.get('/create/usertable', createUserTable);
 
-module.exports = router
+// Route to create a new user
+router.post('/create/user', createUserList);
+
+// Route to retrieve all users
+router.get('/get/user', showUserList);
+
+// Route to retrieve a single user by ID
+router.get('/get/user/:id', showSingleUser);
+
+// Route to update a user's information by ID
+router.put('/updateuser/:id', updateUserRecord);
+
+// Route to delete a user by ID
+router.delete('/deleteuser/:id', deleteUserRecord);
+
+module.exports = router;
