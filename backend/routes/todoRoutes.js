@@ -1,13 +1,32 @@
-const app = require("express");
-const { createTable, createList, showList, showSingleList, updateRecord, deleteRecord } = require("../controllers/todoController");
-const router = app.Router()
+const express = require("express");
+const {
+    createTable,
+    createList,
+    showList,         
+    showSingleList,    
+    updateRecord,      
+    deleteRecord       
+} = require("../controllers/todoController"); 
+const router = express.Router(); 
 
+// Define routes
 
-router.get('/create/todotable', createTable)
-router.post('/add/:id', createList)
-router.get('/get/todolist', showList)
-router.get('/get/todo/:id', showSingleList)
-router.put('/updatelist/:id', updateRecord)
-router.delete('/deletelist/:id', deleteRecord)
+// Route to create the 'todo' table
+router.get('/create/todotable', createTable);
 
-module.exports = router
+// Route to create a new todo list
+router.post('/add/:id', createList);
+
+// Route to retrieve all todo lists
+router.get('/get/todolist', showList);
+
+// Route to retrieve a single todo list by ID
+router.get('/get/todo/:id', showSingleList);
+
+// Route to update a todo list by ID
+router.put('/updatelist/:id', updateRecord);
+
+// Route to delete a todo list by ID
+router.delete('/deletelist/:id', deleteRecord);
+
+module.exports = router; 
